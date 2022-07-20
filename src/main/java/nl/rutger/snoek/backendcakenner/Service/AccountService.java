@@ -54,7 +54,7 @@ public class AccountService {
         adminAccount.setPassword("admin");
         adminAccount.setEmail("Admin@admin.nl");
         Set<Role> adminRoles = new HashSet<>();
-        adminRole.setRoleName("Admin");
+        adminRole.setRoleName("ADMIN");
         adminRole.setRoleDescription("Admin Role");
         adminRoles.add(adminRole);
 
@@ -64,7 +64,7 @@ public class AccountService {
         userAccount.setPassword("user");
         userAccount.setEmail("user@user.nl");
         Set<Role> userRoles = new HashSet<>();
-        userRole.setRoleName("User");
+        userRole.setRoleName("USER");
         userRole.setRoleDescription("Basic Role thats meant for evreyone");
         userRoles.add(userRole);
         userAccount.setRole(userRoles);

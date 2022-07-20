@@ -6,6 +6,10 @@ import nl.rutger.snoek.backendcakenner.Dto.CreateAccountDto;
 import nl.rutger.snoek.backendcakenner.Entity.Account;
 import nl.rutger.snoek.backendcakenner.Service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,6 +44,13 @@ public class AccountController {
 
     @GetMapping("/foradmin")
     public String forAdmin(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if(authentication.getPrincipal() instanceof UserDetails)
+        {
+            UserDetails ud = (UserDetails) authentication.getPrincipal();
+            return "hallo" + ud.getUsername() + " met rollen " + ud.getAuthorities().toString();
+        }
         return " for admins only ";
     }
 
