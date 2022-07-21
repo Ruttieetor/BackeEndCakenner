@@ -14,6 +14,8 @@ public class CreateAccountDto {
 
 
 
+
+
     public String getUsername() {
         return username;
     }
@@ -37,4 +39,5 @@ public class CreateAccountDto {
     public void setEmail(String email) {
         this.email = email;
     }
+
 }

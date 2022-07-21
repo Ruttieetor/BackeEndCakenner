@@ -20,6 +20,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import javax.sql.DataSource;
+
 
 @Configuration
 @EnableWebSecurity
@@ -38,17 +40,27 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         return super.userDetailsService();
     }
 
+    @Autowired
+    private DataSource dataSource;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
-                .inMemoryAuthentication()
-                .withUser("Rutger")
-                .password("$2a$12$V2aBDV4tGXBi7iSgdBv3r.YjEd9DXD5azFfpQ3ZvOFeSOHb3IhK9m")
-                .roles("USER")
-                .and()
-                .withUser("Rutger2")
-                .password("$2a$12$V2aBDV4tGXBi7iSgdBv3r.YjEd9DXD5azFfpQ3ZvOFeSOHb3IhK9m")
-                .roles("USER","ADMIN");
+                //.inMemoryAuthentication()
+                //.withUser("Rutger")
+                //.password("$2a$12$V2aBDV4tGXBi7iSgdBv3r.YjEd9DXD5azFfpQ3ZvOFeSOHb3IhK9m")
+                //.roles("USER")
+                //.and()
+                //.withUser("Rutger2")
+                //.password("$2a$12$V2aBDV4tGXBi7iSgdBv3r.YjEd9DXD5azFfpQ3ZvOFeSOHb3IhK9m")
+                //.roles("USER","ADMIN");
+
+                .jdbcAuthentication()
+                .passwordEncoder(new BCryptPasswordEncoder())
+                .dataSource(dataSource)
+                .usersByUsernameQuery("select username, password, enabled from account where username=?")
+                .authoritiesByUsernameQuery("select user_id,role_id from user_role where user_id = ?");
+
 
     }
 
@@ -58,7 +70,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .authorizeRequests().antMatchers(HttpMethod.POST, "/auth").permitAll()
+                .authorizeRequests().antMatchers( "/auth","/register").permitAll()
                 .and()
                 .authorizeRequests()
                 .anyRequest().authenticated()
