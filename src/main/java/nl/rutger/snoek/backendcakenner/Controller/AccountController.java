@@ -5,6 +5,7 @@ import nl.rutger.snoek.backendcakenner.Dto.AccountCreatedDto;
 import nl.rutger.snoek.backendcakenner.Dto.CreateAccountDto;
 import nl.rutger.snoek.backendcakenner.Entity.Account;
 import nl.rutger.snoek.backendcakenner.Service.AccountService;
+import nl.rutger.snoek.backendcakenner.Util.DBFiller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -28,9 +29,14 @@ public class AccountController {
         this.accountService = accountService;
     }
 
+    @Autowired
+    private DBFiller dbFiller;
+
+
     @PostConstruct
     public void initRolesAndUsers(){
-        accountService.initRolesAndUser();
+        dbFiller.initRatedRecipeAndComment();
+        dbFiller.initRolesAndUser();
     }
 
 

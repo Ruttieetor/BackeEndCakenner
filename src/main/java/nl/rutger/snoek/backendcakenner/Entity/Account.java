@@ -2,6 +2,7 @@ package nl.rutger.snoek.backendcakenner.Entity;
 
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -10,8 +11,9 @@ public class Account {
     @Id
     private String username;
     private String password;
-    private boolean enabled;
     private String email;
+    private boolean enabled;
+
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "USER_ROLE",
@@ -22,10 +24,10 @@ public class Account {
             @JoinColumn(name = "ROLE_ID")
             }
     )
-
-
-
     private Set<Role> role;
+
+
+
 
     public Set<Role> getRole() {
         return role;
