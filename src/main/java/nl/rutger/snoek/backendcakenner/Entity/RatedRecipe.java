@@ -1,6 +1,9 @@
 package nl.rutger.snoek.backendcakenner.Entity;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -17,8 +20,10 @@ public class RatedRecipe {
     private Long id;
     private String name;
     private String ingredientList;
+    @Length(min = 5, max = 10000)
     private String body;
     private String pictureLink;
+    @Length(min = 5, max = 10000)
     private String opinion;
     private double rating;
     private String fromUser;

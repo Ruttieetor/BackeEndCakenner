@@ -41,10 +41,10 @@ public class DBFiller {
 
     public void initRatedRecipeAndComment(){
         RatedRecipe ratedRecipe = new RatedRecipe();
-        ratedRecipe.setName("Dits een ei");
-        ratedRecipe.setIngredientList("- 1 ei, -nog een ei");
-        ratedRecipe.setBody(" 2 eieren lorem ipsum");
-        ratedRecipe.setPictureLink("");
+        ratedRecipe.setName("This is an egg");
+        ratedRecipe.setIngredientList("- 1 ei");
+        ratedRecipe.setBody(" egg lorem ipsum");
+        ratedRecipe.setPictureLink("https://media.gettyimages.com/photos/group-of-brown-raw-eggs-one-is-broken-isolated-white-picture-id173234780?s=612x612");
         ratedRecipe.setOpinion("kinda eggy");
         ratedRecipe.setFromUser("Eggman");
         ratedRecipe.setRating(0);
@@ -58,6 +58,83 @@ public class DBFiller {
 
         ratedRecipeRepo.save(ratedRecipe);
         commentRepo.save(comment);
+
+
+        RatedRecipe ratedRecipe2 = new RatedRecipe();
+        ratedRecipe2.setName("wooooh");
+        ratedRecipe2.setIngredientList("-1 cake");
+        ratedRecipe2.setBody("Cras vel pretium mi, non iaculis nibh. Vestibulum quis eleifend justo, vel rhoncus sapien. Morbi metus orci, porta non molestie commodo, tempor ac leo. Aliquam a volutpat metus. Proin nec turpis nec felis aliquet sagittis id id nunc. Nulla sit amet est turpis. Ut ullamcorper interdum sapien id dignissim. Integer vel arcu lobortis, iaculis metus eu, venenatis mi. ");
+        ratedRecipe2.setPictureLink("https://i.imgur.com/tfQ0pya.png");
+        ratedRecipe2.setOpinion("Just a cake");
+        ratedRecipe2.setFromUser("cakefromstoreguy");
+        ratedRecipe2.setRating(3);
+
+        Comment comment2 = new Comment();
+        comment2.setRatedRecipe(ratedRecipe2);
+        comment2.setBody("Stolen from store");
+        Set<Comment> comments2 = new HashSet<>();
+        comments2.add(comment2);
+        ratedRecipe2.setComment(comments2);
+
+        ratedRecipeRepo.save(ratedRecipe2);
+        commentRepo.save(comment2);
+
+        RatedRecipe ratedRecipe3 = new RatedRecipe();
+        ratedRecipe3.setName("Red velvet cake");
+        ratedRecipe3.setIngredientList("-1 cake, 1 velvet");
+        ratedRecipe3.setBody("lorem ipsum opsidum namella fides fides fides ruttie");
+        ratedRecipe3.setPictureLink("https://www.cake-recept.nl/wp-content/uploads/2015/10/red-velvet-cake.jpg");
+        ratedRecipe3.setOpinion("Red velvet cake");
+        ratedRecipe3.setFromUser("Velvetboi69");
+        ratedRecipe3.setRating(7);
+
+        Comment comment3 = new Comment();
+        comment3.setRatedRecipe(ratedRecipe3);
+        comment3.setBody("Stolen from store");
+        Set<Comment> comments3 = new HashSet<>();
+        comments3.add(comment3);
+        ratedRecipe2.setComment(comments3);
+
+        ratedRecipeRepo.save(ratedRecipe3);
+        commentRepo.save(comment3);
+
+        RatedRecipe ratedRecipe4 = ratedRecipe2;
+        ratedRecipe4.setName("another stolen cake");
+        Comment comment4 = new Comment();
+        Set<Comment> comments4 = new HashSet<>();
+        comment4.setBody("bruh");
+        comments4.add(comment4);
+        ratedRecipe4.setComment(comments4);
+        ratedRecipeRepo.save(ratedRecipe4);
+        commentRepo.save(comment4);
+
+
+    for(int i =0; i<10; i++){
+        RatedRecipe ratedRecipex = new RatedRecipe();
+        ratedRecipex.setName("Its a store cake");
+        ratedRecipex.setIngredientList("-1 cake");
+        ratedRecipex.setBody("lorem ipsum");
+        ratedRecipex.setPictureLink("https://i.imgur.com/tfQ0pya.png");
+        ratedRecipex.setOpinion("Just a cake");
+        ratedRecipex.setFromUser("cakefromstoreguy");
+        ratedRecipex.setRating(i);
+
+
+        Comment commentx = new Comment();
+        commentx.setRatedRecipe(ratedRecipe2);
+        commentx.setBody("Stolen from store");
+        Set<Comment> commentsx = new HashSet<>();
+        commentsx.add(commentx);
+        ratedRecipex.setComment(commentsx);
+
+        ratedRecipeRepo.save(ratedRecipex);
+        commentRepo.save(commentx);
+    }
+
+
+
+
+
 
 
 

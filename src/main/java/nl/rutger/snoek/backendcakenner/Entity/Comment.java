@@ -1,6 +1,7 @@
 package nl.rutger.snoek.backendcakenner.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 
