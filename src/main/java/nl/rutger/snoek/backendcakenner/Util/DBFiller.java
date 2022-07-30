@@ -42,42 +42,43 @@ public class DBFiller {
     public void initRatedRecipeAndComment(){
         RatedRecipe ratedRecipe = new RatedRecipe();
         ratedRecipe.setName("This is an egg");
-        ratedRecipe.setIngredientList("- 1 ei");
-        ratedRecipe.setBody(" egg lorem ipsum");
+        ratedRecipe.setIngredientList("-1 egg,"+"\n" + "-1 egg,"+"\n" + "-1 egg,"+"\n" + "-1 egg,"+"\n" + "-1 egg,"+"\n" + "-1 egg,"+"\n" + "-1 egg,"+"\n" + "-1 egg,"+"\n" + "-1 egg,"+"\n" + "-1 egg,"+"\n" + "-1 egg,"+"\n" + "-1 egg,"+"\n" + "-1 egg,"+"\n" + "-1 egg,"+"\n" + "-1 egg,"+"\n" + "-1 egg,"+"\n" + "-1 egg,"+"\n" + "-1 egg,"+"\n" + "-1 egg,"+"\n" + "-1 egg,"+"\n" + "-1 egg,"+"\n" + "-1 egg,"+"\n");
+        ratedRecipe.setBody("\n" +
+                "\n" +
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sollicitudin condimentum efficitur. Quisque gravida ante quis neque ornare tempus et id lectus. Aliquam sed sapien lorem. Sed aliquam tincidunt eleifend. Mauris a commodo elit, a porta felis. Suspendisse rhoncus augue lorem, a porta enim aliquet sed. Aliquam pellentesque neque eget pharetra faucibus. Aenean facilisis aliquam faucibus.\n" +
+                "\n" +
+                "Nulla ac felis sit amet metus laoreet ullamcorper quis eget dolor. Suspendisse metus nibh, tempor ac augue porttitor, dictum fermentum eros. Donec convallis purus id lorem ultricies, pellentesque tristique enim imperdiet. In hac habitasse platea dictumst. Suspendisse porta sem vel metus feugiat scelerisque. Curabitur sagittis tellus et justo efficitur congue. Mauris luctus vulputate mauris id molestie. Ut scelerisque accumsan est ac imperdiet.\n" +
+                "\n" +
+                "Phasellus dapibus purus in molestie rhoncus. Nulla lacinia cursus orci sed convallis. Sed facilisis non enim ac euismod. Nullam hendrerit eu metus ac aliquet. Quisque pharetra dui eu dolor rhoncus, id varius nulla commodo. Maecenas porttitor rhoncus varius. Vivamus sit amet condimentum lacus. Nulla feugiat vulputate elementum. Etiam suscipit non purus a ultricies. Quisque rutrum leo mauris, a ultrices elit finibus in.\n" +
+                "\n" +
+                "Curabitur egestas tortor quis risus posuere rutrum faucibus ut orci. Nulla maximus velit a lorem efficitur sodales. Duis a viverra mi. Proin scelerisque tempor hendrerit. Ut ut diam scelerisque, sagittis orci nec, ullamcorper ante. Donec ultrices leo augue, in facilisis neque ornare ut. Quisque a varius nisl. Donec nibh est, laoreet ut porta at, ultrices et nisl. Donec congue elementum posuere. Donec rutrum nisi vel finibus pulvinar. Etiam dapibus dignissim nisi sed semper. In vitae velit eu libero convallis finibus quis sit amet mi. Vivamus sagittis, nisl non rhoncus placerat, lacus elit dignissim leo, id cursus diam nunc quis ante.\n" +
+                "\n" +
+                "In pellentesque est enim, id tempus nunc accumsan eget. Suspendisse id egestas odio, nec volutpat massa. Mauris viverra pulvinar ex, eu tincidunt tellus ornare at. Vestibulum mollis augue in lorem convallis ultrices. Duis nibh mi, tincidunt vel lectus eu, lacinia blandit nulla. Aliquam egestas velit non arcu tristique egestas. Pellentesque rhoncus condimentum mauris, vitae ultrices eros sagittis id. Phasellus at eleifend lacus. Suspendisse sagittis dictum consectetur. Quisque ultricies, dui ut vestibulum iaculis, nunc ipsum molestie est, vel accumsan massa neque eleifend dui. Donec tristique ipsum at aliquet eleifend. Quisque ornare massa nibh, eu placerat lacus vulputate id. ");
         ratedRecipe.setPictureLink("https://media.gettyimages.com/photos/group-of-brown-raw-eggs-one-is-broken-isolated-white-picture-id173234780?s=612x612");
-        ratedRecipe.setOpinion("kinda eggy");
+        ratedRecipe.setOpinion(" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sollicitudin condimentum efficitur. Quisque gravida ante quis neque ornare tempus et id lectus. Aliquam sed sapien lorem. Sed aliquam tincidunt eleifend. Mauris a commodo elit, a porta felis. Suspendisse rhoncus augue lorem, a porta enim aliquet sed. Aliquam pellentesque neque eget pharetra faucibus. Aenean facilisis aliquam faucibus.\n" +
+                "\n" +
+                "Nulla ac felis sit amet metus laoreet ullamcorper quis eget dolor. Suspendisse metus nibh, tempor ac augue porttitor, dictum fermentum eros. Donec convallis purus id lorem ultricies, pellentesque tristique enim imperdiet. In hac habitasse platea dictumst. Suspendisse porta sem vel metus feugiat scelerisque. Curabitur sagittis tellus et justo efficitur congue. Mauris luctus vulputate mauris id molestie. Ut scelerisque accumsan est ac imperdiet. ");
         ratedRecipe.setFromUser("Eggman");
         ratedRecipe.setRating(0);
 
         Comment comment = new Comment();
+        Comment comment2 = new Comment();
         comment.setRatedRecipe(ratedRecipe);
-        comment.setBody("Eggy Egg egg");
+        comment2.setRatedRecipe(ratedRecipe);
+        comment.setFromUser("Eggman");
+        comment2.setFromUser("Shadow");
+        comment.setBody("Shadow the hedhog is a bitch ass motherfucker");
+        comment2.setBody("fuck you doctor");
         Set<Comment> comments = new HashSet<>();
         comments.add(comment);
+        comments.add(comment2);
+
         ratedRecipe.setComment(comments);
 
         ratedRecipeRepo.save(ratedRecipe);
         commentRepo.save(comment);
 
 
-        RatedRecipe ratedRecipe2 = new RatedRecipe();
-        ratedRecipe2.setName("wooooh");
-        ratedRecipe2.setIngredientList("-1 cake");
-        ratedRecipe2.setBody("Cras vel pretium mi, non iaculis nibh. Vestibulum quis eleifend justo, vel rhoncus sapien. Morbi metus orci, porta non molestie commodo, tempor ac leo. Aliquam a volutpat metus. Proin nec turpis nec felis aliquet sagittis id id nunc. Nulla sit amet est turpis. Ut ullamcorper interdum sapien id dignissim. Integer vel arcu lobortis, iaculis metus eu, venenatis mi. ");
-        ratedRecipe2.setPictureLink("https://i.imgur.com/tfQ0pya.png");
-        ratedRecipe2.setOpinion("Just a cake");
-        ratedRecipe2.setFromUser("cakefromstoreguy");
-        ratedRecipe2.setRating(3);
-
-        Comment comment2 = new Comment();
-        comment2.setRatedRecipe(ratedRecipe2);
-        comment2.setBody("Stolen from store");
-        Set<Comment> comments2 = new HashSet<>();
-        comments2.add(comment2);
-        ratedRecipe2.setComment(comments2);
-
-        ratedRecipeRepo.save(ratedRecipe2);
-        commentRepo.save(comment2);
 
         RatedRecipe ratedRecipe3 = new RatedRecipe();
         ratedRecipe3.setName("Red velvet cake");
@@ -90,23 +91,15 @@ public class DBFiller {
 
         Comment comment3 = new Comment();
         comment3.setRatedRecipe(ratedRecipe3);
+        comment3.setFromUser("vivalaredvelvet");
         comment3.setBody("Stolen from store");
         Set<Comment> comments3 = new HashSet<>();
         comments3.add(comment3);
-        ratedRecipe2.setComment(comments3);
+        ratedRecipe3.setComment(comments3);
 
         ratedRecipeRepo.save(ratedRecipe3);
         commentRepo.save(comment3);
 
-        RatedRecipe ratedRecipe4 = ratedRecipe2;
-        ratedRecipe4.setName("another stolen cake");
-        Comment comment4 = new Comment();
-        Set<Comment> comments4 = new HashSet<>();
-        comment4.setBody("bruh");
-        comments4.add(comment4);
-        ratedRecipe4.setComment(comments4);
-        ratedRecipeRepo.save(ratedRecipe4);
-        commentRepo.save(comment4);
 
 
     for(int i =0; i<10; i++){
@@ -121,7 +114,8 @@ public class DBFiller {
 
 
         Comment commentx = new Comment();
-        commentx.setRatedRecipe(ratedRecipe2);
+        commentx.setRatedRecipe(ratedRecipex);
+        commentx.setFromUser("X-men");
         commentx.setBody("Stolen from store");
         Set<Comment> commentsx = new HashSet<>();
         commentsx.add(commentx);
@@ -129,6 +123,7 @@ public class DBFiller {
 
         ratedRecipeRepo.save(ratedRecipex);
         commentRepo.save(commentx);
+
     }
 
 

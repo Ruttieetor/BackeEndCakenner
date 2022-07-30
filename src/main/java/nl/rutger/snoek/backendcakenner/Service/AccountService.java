@@ -41,6 +41,14 @@ public class AccountService {
         account.setPassword(encoder.encode(createAccountDto.getPassword()));
         account.setEnabled(true);
         account.setEmail(createAccountDto.getEmail());
+
+        Role userRole = new Role();
+        Set<Role> userRoles = new HashSet<>();
+        userRole.setRoleName("USER");
+        userRole.setRoleDescription("Basic Role thats meant for evreyone");
+        userRoles.add(userRole);
+
+        account.setRole(userRoles);
         accountRepo.save(account);
 
         AccountCreatedDto accountCreatedDto = new AccountCreatedDto();

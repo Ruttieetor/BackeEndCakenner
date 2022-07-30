@@ -12,6 +12,7 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String body;
+    private String fromUser;
 
     @ManyToOne
     @JoinColumn(name = "ratedRecipe_id")
@@ -37,4 +38,14 @@ public class Comment {
     public void setRatedRecipe(RatedRecipe ratedRecipe) {
         this.ratedRecipe = ratedRecipe;
     }
+
+    public String getFromUser() {
+        return fromUser;
+    }
+
+    public void setFromUser(String fromUser) {
+        this.fromUser = fromUser;
+    }
+
+
 }

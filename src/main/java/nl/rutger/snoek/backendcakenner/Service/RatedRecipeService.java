@@ -79,6 +79,7 @@ public class RatedRecipeService {
             CommentDto temp = new CommentDto();
             temp.setId(comment.getId());
             temp.setBody(comment.getBody());
+            temp.setFromUser(comment.getFromUser());
             commentDtos.add(temp);
         }
 
