@@ -1,14 +1,8 @@
 package nl.rutger.snoek.backendcakenner.Util;
 
-
-import nl.rutger.snoek.backendcakenner.Entity.Account;
-import nl.rutger.snoek.backendcakenner.Entity.Comment;
-import nl.rutger.snoek.backendcakenner.Entity.RatedRecipe;
-import nl.rutger.snoek.backendcakenner.Entity.Role;
-import nl.rutger.snoek.backendcakenner.Repository.AccountRepo;
-import nl.rutger.snoek.backendcakenner.Repository.CommentRepo;
-import nl.rutger.snoek.backendcakenner.Repository.RatedRecipeRepo;
-import nl.rutger.snoek.backendcakenner.Repository.RoleRepo;
+import nl.rutger.snoek.backendcakenner.Entity.*;
+import nl.rutger.snoek.backendcakenner.Repository.*;
+import nl.rutger.snoek.backendcakenner.Service.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -32,6 +26,9 @@ public class DBFiller {
 
     @Autowired
     private RatedRecipeRepo ratedRecipeRepo;
+
+    @Autowired
+    private RecipeRepo recipeRepo;
 
 
     @PostConstruct
@@ -67,8 +64,8 @@ public class DBFiller {
         comment2.setRatedRecipe(ratedRecipe);
         comment.setFromUser("Eggman");
         comment2.setFromUser("Shadow");
-        comment.setBody("Shadow the hedhog is a bitch ass motherfucker");
-        comment2.setBody("fuck you doctor");
+        comment.setBody(" I AM THE EGGMAN");
+        comment2.setBody("the man with a masterplan");
         Set<Comment> comments = new HashSet<>();
         comments.add(comment);
         comments.add(comment2);
@@ -137,6 +134,15 @@ public class DBFiller {
     }
 
     public void initRolesAndUser(){
+
+        long id = 1;
+        Recipe recipe = new Recipe();
+        recipe.setFromUser("body");
+        recipe.setName("bodyyyyyyyyyyyyyyyyyyy");
+        recipe.setIngredientList("bodykanoly");
+        recipe.setBody("body bodybodybodybodybodybodybodybodybodybodybodybodybodybodybodybodybodybodybodybodybodybodybodybodybodybodybodybody");
+        recipe.setId(id);
+        recipeRepo.save(recipe);
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 

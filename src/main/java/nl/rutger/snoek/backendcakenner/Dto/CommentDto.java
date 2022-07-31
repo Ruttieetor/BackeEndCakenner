@@ -1,9 +1,12 @@
 package nl.rutger.snoek.backendcakenner.Dto;
 
+import javax.validation.constraints.NotEmpty;
+
 public class CommentDto {
 
     private Long id;
     private String body;
+    @NotEmpty
     private String fromUser;
 
 
@@ -16,7 +19,7 @@ public class CommentDto {
     }
 
     public Long getId() {
-        return id;
+       return id;
     }
 
     public void setId(Long id) {

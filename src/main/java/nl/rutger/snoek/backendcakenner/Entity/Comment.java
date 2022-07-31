@@ -11,6 +11,7 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Length(min = 5, max = 10000)
     private String body;
     private String fromUser;
 

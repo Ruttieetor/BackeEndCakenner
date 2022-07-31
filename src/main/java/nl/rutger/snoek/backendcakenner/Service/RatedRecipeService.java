@@ -7,6 +7,7 @@ import nl.rutger.snoek.backendcakenner.Dto.RatedRecipeWithCommentsDto;
 import nl.rutger.snoek.backendcakenner.Entity.Comment;
 import nl.rutger.snoek.backendcakenner.Entity.RatedRecipe;
 import nl.rutger.snoek.backendcakenner.Exceptions.RecordNotFoundException;
+import nl.rutger.snoek.backendcakenner.Repository.CommentRepo;
 import nl.rutger.snoek.backendcakenner.Repository.RatedRecipeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,9 @@ public class RatedRecipeService {
 
     @Autowired
     private RatedRecipeRepo ratedRecipeRepo;
+
+    @Autowired
+    private CommentRepo commentRepo;
 
 
     public RatedRecipeWithCommentsDto getByID(Long id) {
@@ -45,7 +49,7 @@ public class RatedRecipeService {
 
     }
 
-    private RatedRecipeDto convertToDto(RatedRecipe ratedRecipe){
+    public RatedRecipeDto convertToDto(RatedRecipe ratedRecipe){
         RatedRecipeDto ratedRecipeDto = new RatedRecipeDto();
         ratedRecipeDto.setId(ratedRecipe.getId());
         ratedRecipeDto.setName(ratedRecipe.getName());
@@ -59,7 +63,7 @@ public class RatedRecipeService {
 
     }
 
-    private RatedRecipeWithCommentsDto ConvertToRatedRecipeWithCommentsDto(RatedRecipe ratedRecipe){
+    public RatedRecipeWithCommentsDto ConvertToRatedRecipeWithCommentsDto(RatedRecipe ratedRecipe){
         RatedRecipeWithCommentsDto ratedRecipeWithCommentsDto = new RatedRecipeWithCommentsDto();
         ratedRecipeWithCommentsDto.setId(ratedRecipe.getId());
         ratedRecipeWithCommentsDto.setName(ratedRecipe.getName());
@@ -73,7 +77,7 @@ public class RatedRecipeService {
         return ratedRecipeWithCommentsDto;
     }
 
-    private Set<CommentDto> dtoCommentsConvert(Set<Comment> comments ){
+    public Set<CommentDto> dtoCommentsConvert(Set<Comment> comments ){
         Set<CommentDto> commentDtos = new HashSet<>();
         for(Comment comment : comments){
             CommentDto temp = new CommentDto();
@@ -84,5 +88,29 @@ public class RatedRecipeService {
         }
 
         return commentDtos;
+    }
+
+    public RatedRecipeDto saveRated(RatedRecipeDto ratedRecipeDto){
+
+        RatedRecipe ratedRecipe = new RatedRecipe();
+        ratedRecipe.setName(ratedRecipeDto.getName());
+        ratedRecipe.setIngredientList(ratedRecipeDto.getIngredientList());
+        ratedRecipe.setBody(ratedRecipeDto.getBody());
+        ratedRecipe.setPictureLink(ratedRecipeDto.getPictureLink());
+        ratedRecipe.setOpinion(ratedRecipeDto.getOpinion());
+        ratedRecipe.setRating(ratedRecipeDto.getRating());
+        ratedRecipe.setFromUser(ratedRecipeDto.getFromUser());
+        Set<Comment> comments = new HashSet<>();
+        Comment comment = new Comment();
+        comment.setFromUser("System");
+        comment.setBody("Login to leave a comment!");
+        comment.setRatedRecipe(ratedRecipe);
+        comments.add(comment);
+
+        ratedRecipe.setComment(comments);
+        ratedRecipeRepo.save(ratedRecipe);
+        commentRepo.save(comment);
+
+        return ratedRecipeDto;
     }
 }

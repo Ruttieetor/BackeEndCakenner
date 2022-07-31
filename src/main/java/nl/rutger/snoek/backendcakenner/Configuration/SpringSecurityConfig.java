@@ -59,7 +59,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(new BCryptPasswordEncoder())
                 .dataSource(dataSource)
                 .usersByUsernameQuery("select username, password, enabled from account where username=?")
-                .authoritiesByUsernameQuery("select user_id,role_id from user_role where user_id = ?");
+                .authoritiesByUsernameQuery("select user_id,role_id from user_role where user_id =?");
 
 
     }
@@ -70,8 +70,12 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .authorizeRequests().antMatchers( "/auth","/register", "/showAllRated","/{id}").permitAll()
+                .authorizeRequests()
+                .antMatchers( "/saverated","/auth","/register", "/showAllRated","/recipe/{id}", "/postRecipe","/addComment" ,"/showbyIdRecipe/{id}", "/showAllRecipes" ).permitAll()
                 .and()
+                //.authorizeRequests()
+                //.antMatchers("/postRecipe","/addComment").hasAnyAuthority("USER", "ADMIN")
+                //.and()
                 .authorizeRequests()
                 .anyRequest().authenticated()
                 .and()
