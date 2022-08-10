@@ -68,17 +68,24 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .httpBasic().disable()
+                .cors()
+                .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers( "/saverated","/auth","/register", "/showAllRated","/recipe/{id}", "/postRecipe","/addComment" ,"/showbyIdRecipe/{id}", "/showAllRecipes" ).permitAll()
+                .antMatchers( "/saverated","/auth","/register", "/showAllRated","/recipe/{id}","/showbyIdRecipe/{id}", "/showAllRecipes", "/imageUpload", "/CakennerImages/**" ).permitAll()
                 .and()
-                //.authorizeRequests()
-                //.antMatchers("/postRecipe","/addComment").hasAnyAuthority("USER", "ADMIN")
-                //.and()
+                .authorizeRequests()
+                .antMatchers("/postRecipe","/addComment").hasAnyAuthority("USER", "ADMIN")
+                .and()
                 .authorizeRequests()
                 .anyRequest().authenticated()
                 .and()
+                /*
+                .authorizeRequests()
+                .anyRequest().permitAll()
+                .and()
+                */
                 .addFilterBefore(new JwtRequestFilter(jwtService, userDetailsService()), UsernamePasswordAuthenticationFilter.class)
                 .csrf().disable()
         ;

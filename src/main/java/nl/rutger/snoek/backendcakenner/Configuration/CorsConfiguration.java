@@ -15,18 +15,18 @@ public class CorsConfiguration {
     private static final String PUT = "PUT";
     private static final String OPTIONS = "OPTIONS";
 
+    @Bean
     public WebMvcConfigurer corsConfigurer(){
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                WebMvcConfigurer.super.addCorsMappings(registry);
 
                 registry.addMapping("/**")
-                        .allowedOrigins("*")
+                        //.allowedOrigins("*")
                         .allowedMethods(GET,POST,PUT,DELETE,OPTIONS, "HEAD", "PATCH", "CONNECT")
-                        .allowedHeaders("*")
+                        //.allowedHeaders("*")
                         .allowedOriginPatterns("*")
-                        .allowCredentials(true)
+                        //.allowCredentials(true)
                         ;
             }
         };

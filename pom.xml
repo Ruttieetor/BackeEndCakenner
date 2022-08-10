@@ -10,12 +10,13 @@
     </parent>
     <groupId>nl.rutger.snoek</groupId>
     <artifactId>BackEndCakenner</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0.0</version>
     <name>BackEndCakenner</name>
     <description>BackEndCakenner</description>
     <properties>
         <java.version>17</java.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

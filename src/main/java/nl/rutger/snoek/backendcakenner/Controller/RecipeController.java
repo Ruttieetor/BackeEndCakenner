@@ -9,16 +9,19 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
+@RequestMapping
 public class RecipeController {
 
     @Autowired
     private RecipeService recipeService;
 
     @PostMapping("/postRecipe")
+    @CrossOrigin
     public RecipeDto PostRecipe(@RequestBody RecipeDto recipeDto) {
         recipeService.saveRecipe(recipeDto);
         return recipeDto;
     }
+
 
     @GetMapping("/showAllRecipes")
     public List<RecipeDto> getAll() {
