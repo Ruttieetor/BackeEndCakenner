@@ -169,7 +169,7 @@ public class DBFiller {
         userRoles.add(userRole);
         userAccount.setRole(userRoles);
 
-        adminRoles.add(userRole);
+        //adminRoles.add(userRole);
         adminAccount.setRole(adminRoles);
 
         roleRepo.save(userRole);

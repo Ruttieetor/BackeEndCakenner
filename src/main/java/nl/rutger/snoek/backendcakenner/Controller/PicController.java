@@ -27,7 +27,7 @@ public class PicController {
         String pic = "yes";
 
         try{
-            return picservice.SaveFile(imageFile, Id);
+            return picservice.SaveFile(imageFile);
         } catch(IOException e){
             System.out.println("bruhhh");
             e.printStackTrace();

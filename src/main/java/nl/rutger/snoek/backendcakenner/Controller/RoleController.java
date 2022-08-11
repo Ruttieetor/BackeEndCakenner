@@ -24,12 +24,12 @@ public class RoleController {
     }
 
 
-    @PostMapping("newRole")
+    @PostMapping("/newRole")
     public CreateRoleDto createRole(@Validated @RequestBody CreateRoleDto createRoleDto){
         return roleService.createNewRole(createRoleDto);
     }
 
-    @GetMapping("getRoles")
+    @GetMapping("/getRoles")
     public List<Role> GetRoles(){
         return roleService.GetRoles();
     }

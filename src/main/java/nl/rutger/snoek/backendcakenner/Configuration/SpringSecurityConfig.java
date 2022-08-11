@@ -73,10 +73,18 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers( "/saverated","/auth","/register", "/showAllRated","/recipe/{id}","/showbyIdRecipe/{id}", "/showAllRecipes", "/imageUpload", "/CakennerImages/**" ).permitAll()
+                .antMatchers( "/auth","/register", "/showAllRated","/recipe/{id}",
+                        "/showbyIdRecipe/{id}", "/showAllRecipes", "/imageUpload",
+                        "/CakennerImages/**", "/images/**" , "/IsAdmin/{username}").permitAll()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/postRecipe","/addComment").hasAnyAuthority("USER", "ADMIN")
+                .antMatchers("/postRecipe","/addComment" ).hasAnyAuthority("USER", "ADMIN")
+                .and()
+
+                .authorizeRequests()
+               .antMatchers("/saverated", "/getRoles", "/newrole").hasAuthority("ADMIN")
+
+
                 .and()
                 .authorizeRequests()
                 .anyRequest().authenticated()

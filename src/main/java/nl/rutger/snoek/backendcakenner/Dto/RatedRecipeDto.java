@@ -1,11 +1,14 @@
 package nl.rutger.snoek.backendcakenner.Dto;
 
+import javax.validation.constraints.NotEmpty;
+
 public class RatedRecipeDto {
 
     private Long id;
     private String name;
     private String ingredientList;
     private String body;
+    @NotEmpty
     private String pictureLink;
     private String opinion;
     private double rating;

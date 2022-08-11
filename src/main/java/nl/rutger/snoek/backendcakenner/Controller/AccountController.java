@@ -53,13 +53,17 @@ public class AccountController {
         if(authentication.getPrincipal() instanceof UserDetails)
         {
             UserDetails ud = (UserDetails) authentication.getPrincipal();
-            return "hallo" + ud.getUsername() + " met rollen " + ud.getAuthorities().toString();
+            String text = "YesImAdmin";
+            return text;
         }
-        return " for admins only ";
+        String text = "NoAdmin";
+        return text;
     }
 
-    @GetMapping("/foruser")
-    public String forUser(){
-        return " for users only ";
+    @GetMapping("/IsAdmin/{username}")
+    public String IsAdmin(@PathVariable String username){
+
+        return accountService.getAdminuser(username);
     }
+
 }

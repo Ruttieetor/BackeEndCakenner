@@ -19,14 +19,14 @@ public class PicService {
 
 
 
-    public String SaveFile(MultipartFile imageFile, String Id) throws IOException {
+    public String SaveFile(MultipartFile imageFile) throws IOException {
 
         String filename = imageFile.getOriginalFilename();
-        String folder =  "C:\\Users\\rutge\\IdeaProjects\\BackEndCakenner\\src\\main\\resources\\public\\CakennerImages";
+        String folder =  "C:\\Users\\rutge\\IdeaProjects\\BackEndCakenner\\images";
         byte[] bytes = imageFile.getBytes();
         Path path =Paths.get(folder +"\\"+ filename);
         Files.write(path, bytes);
-        String url = "http://localhost:8080/CakennerImages/" + filename;
+        String url = "http://localhost:8080/images/" + filename;
         return url;
     }
 }
