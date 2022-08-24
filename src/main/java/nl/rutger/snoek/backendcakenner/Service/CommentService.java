@@ -24,7 +24,8 @@ public class CommentService {
     private RatedRecipeRepo ratedRecipeRepo;
     @Autowired
     private RatedRecipeService ratedRecipeService;
-
+//grabs the comments from the ratedRecipes instead of just adding it to the comments it then adds it to the set
+    // and then saves the now edited rated recipe.
     public CommentDto addComment(CommentDto commentDto) {
 
         Optional<RatedRecipe> ratedRecipe = ratedRecipeRepo.findById(commentDto.getId());
@@ -40,26 +41,6 @@ public class CommentService {
 
         }
 
-        /*
-        RatedRecipeWithCommentsDto ratedRecipeWithCommentsDto = ratedRecipeService.getByID(commentDto.getId());
-        Comment comment = new Comment();
-        comment.setBody(commentDto.getBody());
-        comment.setFromUser(commentDto.getFromUser());
-
-        //RatedRecipe ratedRecipe = new RatedRecipe();
-
-
-        ratedRecipe.setId(ratedRecipeWithCommentsDto.getId());
-        ratedRecipe.setName(ratedRecipeWithCommentsDto.getName());
-        ratedRecipe.setIngredientList(ratedRecipeWithCommentsDto.getIngredientList());
-        ratedRecipe.setBody(ratedRecipeWithCommentsDto.getBody());
-        ratedRecipe.setPictureLink(ratedRecipeWithCommentsDto.getPictureLink());
-        ratedRecipe.setOpinion(ratedRecipeWithCommentsDto.getOpinion());
-        ratedRecipe.setRating(ratedRecipeWithCommentsDto.getRating());
-        ratedRecipe.setFromUser(ratedRecipeWithCommentsDto.getFromUser());
-        ratedRecipe.setComment(ratedRecipeWithCommentsDto.getComments());
-
-*/
             return commentDto;
         }
     }

@@ -46,14 +46,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
-                //.inMemoryAuthentication()
-                //.withUser("Rutger")
-                //.password("$2a$12$V2aBDV4tGXBi7iSgdBv3r.YjEd9DXD5azFfpQ3ZvOFeSOHb3IhK9m")
-                //.roles("USER")
-                //.and()
-                //.withUser("Rutger2")
-                //.password("$2a$12$V2aBDV4tGXBi7iSgdBv3r.YjEd9DXD5azFfpQ3ZvOFeSOHb3IhK9m")
-                //.roles("USER","ADMIN");
 
                 .jdbcAuthentication()
                 .passwordEncoder(new BCryptPasswordEncoder())
@@ -89,11 +81,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .anyRequest().authenticated()
                 .and()
-                /*
-                .authorizeRequests()
-                .anyRequest().permitAll()
-                .and()
-                */
+
                 .addFilterBefore(new JwtRequestFilter(jwtService, userDetailsService()), UsernamePasswordAuthenticationFilter.class)
                 .csrf().disable()
         ;

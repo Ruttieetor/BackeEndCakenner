@@ -14,7 +14,7 @@ public class Account {
     private String email;
     private boolean enabled;
 
-
+// the many to many relation creates an extra table that gets used in checking the role of an user
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "USER_ROLE",
     joinColumns = {

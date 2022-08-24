@@ -18,11 +18,14 @@ public class PicService {
 
 
 
-
+//Does not use any repository and instead uses a local file to save the images
+    // function gives the url for the picture back so that the frontend can use this.
     public String SaveFile(MultipartFile imageFile) throws IOException {
 
         String filename = imageFile.getOriginalFilename();
+        // EDIT STRUNG UNDER THIS COMMENT TO THE DIRECT PATH OF UR PICTURE FOLDER
         String folder =  "C:\\Users\\rutge\\IdeaProjects\\BackEndCakenner\\images";
+        //------------------------------------------------------------------------
         byte[] bytes = imageFile.getBytes();
         Path path =Paths.get(folder +"\\"+ filename);
         Files.write(path, bytes);

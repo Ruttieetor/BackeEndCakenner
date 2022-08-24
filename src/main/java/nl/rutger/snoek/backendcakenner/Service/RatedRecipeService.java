@@ -48,7 +48,7 @@ public class RatedRecipeService {
                .collect(Collectors.toList());
 
     }
-
+//coversion van rated recipe naar rated recipe DTO
     public RatedRecipeDto convertToDto(RatedRecipe ratedRecipe){
         RatedRecipeDto ratedRecipeDto = new RatedRecipeDto();
         ratedRecipeDto.setId(ratedRecipe.getId());

@@ -102,10 +102,26 @@ public class DBFiller {
     for(int i =0; i<10; i++){
         RatedRecipe ratedRecipex = new RatedRecipe();
         ratedRecipex.setName("Its a store cake");
-        ratedRecipex.setIngredientList("-1 cake");
-        ratedRecipex.setBody("lorem ipsum");
+        ratedRecipex.setIngredientList("1 cake");
+        ratedRecipex.setBody("Lorem ipsum dolor sit amet, " +
+                "consectetur adipiscing elit. Praesent id erat diam." +
+                " Interdum et malesuada fames ac ante ipsum primis in " +
+                "faucibus. Mauris commodo at mi id sollicitudin. Cras " +
+                "sed auctor leo. Duis sollicitudin " +
+                "lacus nec ultrices sagittis. Pellentesque mollis orci " +
+                "quis tortor eleifend, id iaculis velit pretium. Nullam " +
+                "fermentum. ");
         ratedRecipex.setPictureLink("https://i.imgur.com/tfQ0pya.png");
-        ratedRecipex.setOpinion("Just a cake");
+        ratedRecipex.setOpinion("Lorem ipsum dolor sit amet, " +
+                "consectetur adipiscing elit. Donec bibendum " +
+                "sagittis ante nec condimentum. Fusce sodales " +
+                "mollis rhoncus. In id diam pretium, maximus mi " +
+                "finibus, efficitur quam. Duis eros lorem, luctus " +
+                "vitae sodales at, porttitor ac nibh. Suspendisse " +
+                "gravida ipsum nec odio scelerisque sagittis. " +
+                "Phasellus eros ipsum, mollis non venenatis vel, " +
+                "malesuada sit amet neque. Nunc sapien ligula, " +
+                "malesuada dignissim. ");
         ratedRecipex.setFromUser("cakefromstoreguy");
         ratedRecipex.setRating(i);
 
@@ -138,9 +154,12 @@ public class DBFiller {
         long id = 1;
         Recipe recipe = new Recipe();
         recipe.setFromUser("body");
-        recipe.setName("bodyyyyyyyyyyyyyyyyyyy");
+        recipe.setName("bodyyy");
         recipe.setIngredientList("bodykanoly");
-        recipe.setBody("body bodybodybodybodybodybodybodybodybodybodybodybodybodybodybodybodybodybodybodybodybodybodybodybodybodybodybodybody");
+        recipe.setBody("body bodybodybodybody" +
+                "bodybodybodybodybodybodybodybodybodybody" +
+                "bodybodybodybodybodybodybodybodybodybody" +
+                "bodybodybodybody");
         recipe.setId(id);
         recipeRepo.save(recipe);
 

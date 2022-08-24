@@ -27,7 +27,7 @@ public class AccountService {
     @Autowired
     private AccountRepo accountRepo;
 
-
+//this function also gives the basic USER role to the account
     public AccountCreatedDto Register(CreateAccountDto createAccountDto) {
         final Optional<Account> accountOptional = accountRepo.findAccountByUsernameIs(createAccountDto.getUsername());
 
@@ -59,6 +59,7 @@ public class AccountService {
 
     }
 
+   //this part retrives the user account to check if its an admin
     public String getAdminuser(String username) {
         Optional<Account> temp = accountRepo.findById(username);
         if (temp.isPresent()) {
@@ -69,7 +70,11 @@ public class AccountService {
 
         }
     }
-
+    //behold my issue of using a set biting me back
+    //I had to recreate the admin role and compare that to all the entries of the set.
+    // after that I needed to use an atomic int to even get something out of that loop which otherwise
+    // would give me a cannot use lambda expression argument dynamically.
+    //this bypasses that issue lucky enough and did not have to rewrite one of my oldest data structures in this program.
     public String adminYesNo(Account account) {
         Set<Role> temp = account.getRole();
 

@@ -23,8 +23,7 @@ public class PicController {
     @PostMapping("/imageUpload")
     public String uploadImage(@RequestParam("imageFile")MultipartFile imageFile){
 
-        String Id = "10";
-        String pic = "yes";
+
 
         try{
             return picservice.SaveFile(imageFile);

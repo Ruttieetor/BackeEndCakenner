@@ -30,7 +30,7 @@ public class AccountController {
     @Autowired
     private DBFiller dbFiller;
 
-
+//fills the databse with dummy data
     @PostConstruct
     public void initRolesAndUsers(){
         dbFiller.initRatedRecipeAndComment();
@@ -46,6 +46,7 @@ public class AccountController {
 
     }
 
+    // old version to check if person is an admin, left here because might proof of use later.
     @GetMapping("/foradmin")
     public String forAdmin(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -60,6 +61,7 @@ public class AccountController {
         return text;
     }
 
+    //check if the role the person has is an admin
     @GetMapping("/IsAdmin/{username}")
     public String IsAdmin(@PathVariable String username){
 
