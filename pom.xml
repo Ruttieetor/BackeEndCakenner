@@ -10,7 +10,7 @@
     </parent>
     <groupId>nl.rutger.snoek</groupId>
     <artifactId>BackEndCakenner</artifactId>
-    <version>1.0.0.0</version>
+    <version>1.1.0.0</version>
     <name>BackEndCakenner</name>
     <description>BackEndCakenner</description>
     <properties>
