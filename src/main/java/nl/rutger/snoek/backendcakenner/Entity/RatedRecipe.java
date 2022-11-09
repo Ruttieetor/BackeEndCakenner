@@ -13,6 +13,7 @@ public class RatedRecipe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @Length(min = 5, max = 10000)
     private String ingredientList;
     @Length(min = 5, max = 10000)
     private String body;
